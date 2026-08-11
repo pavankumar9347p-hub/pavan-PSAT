@@ -3,10 +3,6 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
-/*
- * Create the Student and Priorities classes here.
- */
-
 class Student {
     private int id;
     private String name;
@@ -36,10 +32,10 @@ class Priorities {
 
         PriorityQueue<Student> pq = new PriorityQueue<>((a, b) -> {
             if (Double.compare(b.getCGPA(), a.getCGPA()) != 0)
-                return Double.compare(b.getCGPA(), a.getCGPA()); // higher CGPA first
+                return Double.compare(b.getCGPA(), a.getCGPA()); 
             if (!a.getName().equals(b.getName()))
-                return a.getName().compareTo(b.getName()); // alphabetical order
-            return Integer.compare(a.getID(), b.getID()); // lower ID first
+                return a.getName().compareTo(b.getName()); 
+            return Integer.compare(a.getID(), b.getID()); 
         });
 
         for (String event : events) {
