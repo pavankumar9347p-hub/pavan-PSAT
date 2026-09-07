@@ -1,1 +1,60 @@
 
+import java.util.*;
+
+class Employee {
+    String name;
+    double salary;
+
+    Employee(String name, double salary) {
+        this.name = name;
+        this.salary = salary;
+    }
+
+    void transformSalary(double percentage) {
+        salary = salary + (salary * percentage / 100);
+    }
+
+    void display() {
+        System.out.printf("%s %.2f%n", name, salary);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        Employee[] employees = new Employee[n];
+
+        for (int i = 0; i < n; i++) {
+            String name = sc.next();
+            double salary = sc.nextDouble();
+            employees[i] = new Employee(name, salary);
+        }
+
+        double percentage = sc.nextDouble();
+
+        for (Employee employee : employees) {
+            employee.transformSalary(percentage);
+        }
+
+        for (Employee employee : employees) {
+            employee.display();
+        }
+
+        sc.close();
+    }
+}
+
+output:
+Example Input
+3
+Pavan 30000
+Rahul 40000
+Arun 50000
+10
+Output
+Pavan 33000.00
+Rahul 44000.00
+Arun 55000.00
