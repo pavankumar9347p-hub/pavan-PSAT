@@ -1,1 +1,38 @@
 
+import java.util.*;
+
+class Result {
+
+    public static List<Integer> maxSubarray(List<Integer> arr) {
+        int current = arr.get(0);
+        int maxSub = arr.get(0);
+
+        int maxSubsequence = arr.get(0);
+
+        for (int i = 1; i < arr.size(); i++) {
+            current = Math.max(arr.get(i), current + arr.get(i));
+            maxSub = Math.max(maxSub, current);
+
+            if (arr.get(i) > 0) {
+                maxSubsequence += arr.get(i);
+            }
+        }
+
+        if (maxSubsequence <= 0) {
+            maxSubsequence = Collections.max(arr);
+        }
+
+        return Arrays.asList(maxSub, maxSubsequence);
+    }
+}
+
+output:
+Input
+
+1
+5
+2 -1 2 3 4 -5
+
+Output
+
+10 11
