@@ -1,1 +1,34 @@
 
+import java.util.*;
+
+public class Solution {
+
+    public static int birthday(List<Integer> s, int d, int m) {
+        int count = 0;
+
+        for (int i = 0; i <= s.size() - d; i++) {
+            int sum = 0;
+
+            for (int j = i; j < i + d; j++) {
+                sum += s.get(j);
+            }
+
+            if (sum == m) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+}
+
+output:
+Input
+
+5
+2 2 1 3 2
+4 2
+
+Output
+
+2
