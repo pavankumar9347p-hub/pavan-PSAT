@@ -1,1 +1,85 @@
+import java.util.*;
 
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int count = 0;
+        double sum = 0;
+        double min = Double.MAX_VALUE;
+        double max = Double.MIN_VALUE;
+        double threshold = 100;
+
+        System.out.println("Real-Time Stream Analytics Engine");
+        System.out.println("Enter numbers one by one (-1 to stop):");
+
+        while (true) {
+            double value = sc.nextDouble();
+
+            if (value == -1)
+                break;
+
+            count++;
+            sum += value;
+            min = Math.min(min, value);
+            max = Math.max(max, value);
+
+            double average = sum / count;
+
+            System.out.println("\nNew Event: " + value);
+            System.out.println("Count: " + count);
+            System.out.println("Sum: " + sum);
+            System.out.println("Average: " + average);
+            System.out.println("Minimum: " + min);
+            System.out.println("Maximum: " + max);
+
+            if (value > threshold)
+                System.out.println("ALERT: Value exceeds threshold!");
+        }
+
+        System.out.println("\nStream processing completed.");
+        sc.close();
+    }
+}
+
+output:
+
+Real-Time Stream Analytics Engine
+Enter numbers one by one (-1 to stop):
+50
+120
+80
+150
+-1
+
+New Event: 50.0
+Count: 1
+Sum: 50.0
+Average: 50.0
+Minimum: 50.0
+Maximum: 50.0
+
+New Event: 120.0
+Count: 2
+Sum: 170.0
+Average: 85.0
+Minimum: 50.0
+Maximum: 120.0
+ALERT: Value exceeds threshold!
+
+New Event: 80.0
+Count: 3
+Sum: 250.0
+Average: 83.33333333333333
+Minimum: 50.0
+Maximum: 120.0
+
+New Event: 150.0
+Count: 4
+Sum: 400.0
+Average: 100.0
+Minimum: 50.0
+Maximum: 150.0
+ALERT: Value exceeds threshold!
+
+Stream processing completed.
