@@ -1,0 +1,21 @@
+class Solution {
+    public boolean rotateString(String s, String goal) {
+        if (s.length() != goal.length()) {
+            return false;
+        }
+
+        return (s + s).contains(goal);
+    }
+}
+
+output:
+s = "abcde"
+goal = "cdeab"
+
+"abcde" + "abcde" becomes:
+
+abcdeabcde
+
+"cdeab" is present, so the answer is:
+
+true
