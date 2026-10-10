@@ -1,1 +1,57 @@
 
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of routes: ");
+        int n = sc.nextInt();
+
+        int[] distance = new int[n];
+        int[] traffic = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("Enter distance and traffic level for route " + (i + 1) + ":");
+            distance[i] = sc.nextInt();
+            traffic[i] = sc.nextInt();
+        }
+
+        int bestRoute = 0;
+        int minTime = Integer.MAX_VALUE;
+
+        for (int i = 0; i < n; i++) {
+            int speed;
+
+            if (traffic[i] == 1)
+                speed = 60;
+            else if (traffic[i] == 2)
+                speed = 40;
+            else
+                speed = 20;
+
+            int time = distance[i] * 60 / speed;
+
+            if (time < minTime) {
+                minTime = time;
+                bestRoute = i;
+            }
+        }
+
+        System.out.println("Best Route: " + (bestRoute + 1));
+        System.out.println("Estimated Time: " + minTime + " minutes");
+
+        sc.close();
+    }
+}
+
+
+sample input:
+3
+10 1
+8 2
+5 3
+
+output:
+Best Route: 1
+Estimated Time: 10 minutes
