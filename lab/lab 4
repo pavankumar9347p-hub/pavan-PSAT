@@ -1,1 +1,34 @@
 
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String dna = sc.nextLine();
+        String pattern = sc.nextLine();
+
+        int count = 0;
+
+        for (int i = 0; i <= dna.length() - pattern.length(); i++) {
+            if (dna.substring(i, i + pattern.length()).equals(pattern)) {
+                count++;
+            }
+        }
+
+        if (count > 0)
+            System.out.println("Pattern Found: " + count);
+        else
+            System.out.println("Pattern Not Found");
+
+        sc.close();
+    }
+}
+
+
+sample input:
+ATCGATCGAT
+ATCG
+
+output:
+Pattern Found: 2
