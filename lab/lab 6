@@ -1,1 +1,106 @@
 
+import java.util.Scanner;
+
+class Ride {
+    String passenger;
+    String pickup;
+    String destination;
+    double distance;
+    double fare;
+
+    Ride(String passenger, String pickup, String destination, double distance) {
+        this.passenger = passenger;
+        this.pickup = pickup;
+        this.destination = destination;
+        this.distance = distance;
+        this.fare = calculateFare(distance);
+    }
+
+    double calculateFare(double distance) {
+        return 50 + (distance * 12);
+    }
+
+    void displayRide() {
+        System.out.println("Passenger: " + passenger);
+        System.out.println("Pickup: " + pickup);
+        System.out.println("Destination: " + destination);
+        System.out.println("Distance: " + distance + " km");
+        System.out.println("Fare: Rs." + fare);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Ride ride = null;
+
+        while (true) {
+            System.out.println("\n1. Book Ride");
+            System.out.println("2. View Ride");
+            System.out.println("3. Exit");
+
+            int choice = sc.nextInt();
+            sc.nextLine();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter passenger name: ");
+                    String name = sc.nextLine();
+
+                    System.out.print("Enter pickup location: ");
+                    String pickup = sc.nextLine();
+
+                    System.out.print("Enter destination: ");
+                    String destination = sc.nextLine();
+
+                    System.out.print("Enter distance in km: ");
+                    double distance = sc.nextDouble();
+
+                    if (distance <= 0) {
+                        System.out.println("Invalid Distance");
+                    } else {
+                        ride = new Ride(name, pickup, destination, distance);
+                        System.out.println("Ride Booked Successfully");
+                        System.out.println("Fare: Rs." + ride.fare);
+                    }
+                    break;
+
+                case 2:
+                    if (ride == null) {
+                        System.out.println("No Ride Booked");
+                    } else {
+                        ride.displayRide();
+                    }
+                    break;
+
+                case 3:
+                    System.out.println("Thank You for Using Ride Sharing");
+                    sc.close();
+                    return;
+
+                default:
+                    System.out.println("Invalid Choice");
+            }
+        }
+    }
+}
+
+
+sample input:
+1
+Pavan
+College
+Railway Station
+10
+2
+3
+
+output:
+Ride Booked Successfully
+Fare: Rs.170.0
+Passenger: Pavan
+Pickup: College
+Destination: Railway Station
+Distance: 10.0 km
+Fare: Rs.170.0
+Thank You for Using Ride Sharing
