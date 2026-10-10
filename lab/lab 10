@@ -1,1 +1,50 @@
 
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String correctUser = "admin";
+        String correctPass = "1234";
+
+        int attempts = sc.nextInt();
+        int success = 0;
+        int failed = 0;
+
+        for (int i = 0; i < attempts; i++) {
+            String username = sc.next();
+            String password = sc.next();
+
+            if (username.equals(correctUser) &&
+                password.equals(correctPass)) {
+                System.out.println("Login Successful");
+                success++;
+            } else {
+                System.out.println("Login Failed");
+                failed++;
+            }
+        }
+
+        System.out.println("Successful Logins: " + success);
+        System.out.println("Failed Logins: " + failed);
+
+        sc.close();
+    }
+}
+
+
+sample input:
+4
+admin 1234
+user 5678
+admin 1111
+admin 1234
+
+output:
+Login Successful
+Login Failed
+Login Failed
+Login Successful
+Successful Logins: 2
+Failed Logins: 2
